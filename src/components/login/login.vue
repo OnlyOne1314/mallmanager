@@ -24,20 +24,34 @@ export default {
     }
   },
   methods: {
-    handLogin () {
-      this.$http.post('login', this.formdata).then(res => {
-        const {
-          // eslint-disable-next-line no-unused-vars
-          data, meta: {msg, staus}
-        } = res.data
-        if (staus === 200) {
-          this.$router.push({name: 'home'})
-          this.$message.success(msg)
-        } else {
-          this.$message.warning(msg)
-        }
-      })
+    // 让异步操作的代码 看起来像同步代码
+    async handLogin () {
+      const res = await this.$http.post('login', this.formdata)
+      const {
+        // eslint-disable-next-line no-unused-vars
+        data, meta: {msg, staus}
+      } = res.data
+      if (staus === 200) {
+        this.$router.push({name: 'home'})
+        this.$message.success(msg)
+      } else {
+        this.$message.warning(msg)
+      }
     }
+    // handLogin () {
+    //   this.$http.post('login', this.formdata).then(res => {
+    //     const {
+    //       // eslint-disable-next-line no-unused-vars
+    //       data, meta: {msg, staus}
+    //     } = res.data
+    //     if (staus === 200) {
+    //       this.$router.push({name: 'home'})
+    //       this.$message.success(msg)
+    //     } else {
+    //       this.$message.warning(msg)
+    //     }
+    //   })
+    // }
   }
 }
 </script>
