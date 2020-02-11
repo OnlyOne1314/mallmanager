@@ -32,6 +32,7 @@ export default {
         data, meta: {msg, staus}
       } = res.data
       if (staus === 200) {
+        localStorage.setItem('token', data.token)
         this.$router.push({name: 'home'})
         this.$message.success(msg)
       } else {
@@ -59,7 +60,10 @@ export default {
 <style>
 .login-wrap {
     height: 100%;
-    background-color: #324152;
+    background-image: url(../../assets/denglu.jpg);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
     display: flex;
     justify-content: center;
     align-items: center;
