@@ -7,6 +7,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import '@/assets/css/reset.css'
 import MyServerHttp from '@/plugins/http.js'
+import moment from 'moment'
+
+// 全局过滤器 - 处理日期
+Vue.filter('fmtdate', (v) => {
+  return moment(v).format('YYYY-MM-DD')
+})
 
 Vue.use(ElementUI)
 Vue.use(MyServerHttp)
